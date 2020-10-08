@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina5_9" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DatePickerViewController" customModule="Deadline" customModuleProvider="target">
+            <connections>
+                <outlet property="cancelButton" destination="NSM-Fj-zro" id="t9T-ec-X1g"/>
+                <outlet property="datePicker" destination="iDn-CB-hFp" id="UEO-LV-paD"/>
+                <outlet property="doneButton" destination="xce-p1-wAk" id="gLo-0K-zDi"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="q7Q-Ba-dgQ">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                    <subviews>
+                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="9gq-jz-83F">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                            <subviews>
+                                <button opaque="NO" alpha="0.40000000000000002" contentMode="scaleToFill" verticalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ch7-67-4fr">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="518"/>
+                                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <connections>
+                                        <action selector="cancelAction:" destination="-1" eventType="touchUpInside" id="ExH-9C-R6m"/>
+                                    </connections>
+                                </button>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dcd-tQ-vHE">
+                                    <rect key="frame" x="0.0" y="518" width="375" height="294"/>
+                                    <subviews>
+                                        <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="wvY-vi-zy5">
+                                            <rect key="frame" x="16" y="0.0" width="343" height="44"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NSM-Fj-zro">
+                                                    <rect key="frame" x="0.0" y="0.0" width="80" height="44"/>
+                                                    <color key="backgroundColor" systemColor="systemPinkColor"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="80" id="5b2-cc-xAj"/>
+                                                    </constraints>
+                                                    <state key="normal" title="Cancel"/>
+                                                    <connections>
+                                                        <action selector="cancelAction:" destination="-1" eventType="touchUpInside" id="TLm-vj-ZpB"/>
+                                                    </connections>
+                                                </button>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xce-p1-wAk">
+                                                    <rect key="frame" x="263" y="0.0" width="80" height="44"/>
+                                                    <color key="backgroundColor" systemColor="systemGray5Color"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="80" id="d1c-ta-eGw"/>
+                                                    </constraints>
+                                                    <state key="normal" title="Done"/>
+                                                    <connections>
+                                                        <action selector="doneAction:" destination="-1" eventType="touchUpInside" id="fcS-eL-zN6"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="44" id="UR6-XJ-RoU"/>
+                                            </constraints>
+                                        </stackView>
+                                        <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" style="wheels" translatesAutoresizingMaskIntoConstraints="NO" id="iDn-CB-hFp">
+                                            <rect key="frame" x="0.0" y="44" width="375" height="250"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="250" id="ltw-Ai-mKF"/>
+                                            </constraints>
+                                        </datePicker>
+                                    </subviews>
+                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                    <constraints>
+                                        <constraint firstItem="wvY-vi-zy5" firstAttribute="leading" secondItem="dcd-tQ-vHE" secondAttribute="leading" constant="16" id="1QB-N9-r3y"/>
+                                        <constraint firstAttribute="trailing" secondItem="iDn-CB-hFp" secondAttribute="trailing" id="6nL-EW-4zY"/>
+                                        <constraint firstAttribute="bottom" secondItem="iDn-CB-hFp" secondAttribute="bottom" id="FDD-Ro-S91"/>
+                                        <constraint firstItem="iDn-CB-hFp" firstAttribute="top" secondItem="wvY-vi-zy5" secondAttribute="bottom" id="IMG-Ok-Y6e"/>
+                                        <constraint firstItem="wvY-vi-zy5" firstAttribute="top" secondItem="dcd-tQ-vHE" secondAttribute="top" id="QHu-Je-KbD"/>
+                                        <constraint firstAttribute="trailing" secondItem="wvY-vi-zy5" secondAttribute="trailing" constant="16" id="SDt-zc-ilI"/>
+                                        <constraint firstItem="iDn-CB-hFp" firstAttribute="leading" secondItem="dcd-tQ-vHE" secondAttribute="leading" id="fMe-gh-Er4"/>
+                                    </constraints>
+                                </view>
+                            </subviews>
+                        </stackView>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="9gq-jz-83F" firstAttribute="top" secondItem="q7Q-Ba-dgQ" secondAttribute="top" id="1Hu-M2-Gu6"/>
+                        <constraint firstAttribute="bottom" secondItem="9gq-jz-83F" secondAttribute="bottom" id="TJ2-Ym-0EK"/>
+                        <constraint firstItem="9gq-jz-83F" firstAttribute="leading" secondItem="q7Q-Ba-dgQ" secondAttribute="leading" id="TsG-Jm-E1j"/>
+                        <constraint firstAttribute="trailing" secondItem="9gq-jz-83F" secondAttribute="trailing" id="szX-gy-j62"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="q7Q-Ba-dgQ" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="DSg-QX-yvR"/>
+                <constraint firstItem="q7Q-Ba-dgQ" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="EwQ-eH-Wm0"/>
+                <constraint firstAttribute="bottom" secondItem="q7Q-Ba-dgQ" secondAttribute="bottom" id="KHW-5W-Glg"/>
+                <constraint firstAttribute="trailing" secondItem="q7Q-Ba-dgQ" secondAttribute="trailing" id="oU1-Ed-3jG"/>
+            </constraints>
+            <point key="canvasLocation" x="-7.2463768115942031" y="69.642857142857139"/>
+        </view>
+    </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGray5Color">
+            <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemPinkColor">
+            <color red="1" green="0.17647058823529413" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>

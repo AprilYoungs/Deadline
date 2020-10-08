@@ -8,14 +8,16 @@
 
 /* Begin PBXBuildFile section */
 		118BDCED252F12B100E86EEA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 118BDCEC252F12B100E86EEA /* AppDelegate.swift */; };
-		118BDCEF252F12B100E86EEA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 118BDCEE252F12B100E86EEA /* SceneDelegate.swift */; };
-		118BDCF1252F12B100E86EEA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 118BDCF0252F12B100E86EEA /* ViewController.swift */; };
+		118BDCF1252F12B100E86EEA /* MissionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 118BDCF0252F12B100E86EEA /* MissionController.swift */; };
 		118BDCF4252F12B100E86EEA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 118BDCF2252F12B100E86EEA /* Main.storyboard */; };
 		118BDCF7252F12B100E86EEA /* Deadline.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 118BDCF5252F12B100E86EEA /* Deadline.xcdatamodeld */; };
 		118BDCF9252F12B200E86EEA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 118BDCF8252F12B200E86EEA /* Assets.xcassets */; };
 		118BDCFC252F12B200E86EEA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 118BDCFA252F12B200E86EEA /* LaunchScreen.storyboard */; };
 		118BDD07252F12B200E86EEA /* DeadlineTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 118BDD06252F12B200E86EEA /* DeadlineTests.swift */; };
 		118BDD12252F12B200E86EEA /* DeadlineUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 118BDD11252F12B200E86EEA /* DeadlineUITests.swift */; };
+		118BDD34252F405100E86EEA /* ItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 118BDD33252F405100E86EEA /* ItemTableViewCell.swift */; };
+		118BDD3D252F553E00E86EEA /* DatePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 118BDD3B252F553E00E86EEA /* DatePickerViewController.swift */; };
+		118BDD3E252F553E00E86EEA /* DatePickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 118BDD3C252F553E00E86EEA /* DatePickerViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,8 +40,7 @@
 /* Begin PBXFileReference section */
 		118BDCE9252F12B100E86EEA /* Deadline.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Deadline.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		118BDCEC252F12B100E86EEA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		118BDCEE252F12B100E86EEA /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		118BDCF0252F12B100E86EEA /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		118BDCF0252F12B100E86EEA /* MissionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissionController.swift; sourceTree = "<group>"; };
 		118BDCF3252F12B100E86EEA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		118BDCF6252F12B100E86EEA /* Deadline.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Deadline.xcdatamodel; sourceTree = "<group>"; };
 		118BDCF8252F12B200E86EEA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -51,6 +52,10 @@
 		118BDD0D252F12B200E86EEA /* DeadlineUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DeadlineUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		118BDD11252F12B200E86EEA /* DeadlineUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeadlineUITests.swift; sourceTree = "<group>"; };
 		118BDD13252F12B200E86EEA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		118BDD22252F148D00E86EEA /* Deadline.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Deadline.entitlements; sourceTree = "<group>"; };
+		118BDD33252F405100E86EEA /* ItemTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemTableViewCell.swift; sourceTree = "<group>"; };
+		118BDD3B252F553E00E86EEA /* DatePickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerViewController.swift; sourceTree = "<group>"; };
+		118BDD3C252F553E00E86EEA /* DatePickerViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DatePickerViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,9 +106,12 @@
 		118BDCEB252F12B100E86EEA /* Deadline */ = {
 			isa = PBXGroup;
 			children = (
+				118BDD22252F148D00E86EEA /* Deadline.entitlements */,
 				118BDCEC252F12B100E86EEA /* AppDelegate.swift */,
-				118BDCEE252F12B100E86EEA /* SceneDelegate.swift */,
-				118BDCF0252F12B100E86EEA /* ViewController.swift */,
+				118BDCF0252F12B100E86EEA /* MissionController.swift */,
+				118BDD33252F405100E86EEA /* ItemTableViewCell.swift */,
+				118BDD3B252F553E00E86EEA /* DatePickerViewController.swift */,
+				118BDD3C252F553E00E86EEA /* DatePickerViewController.xib */,
 				118BDCF2252F12B100E86EEA /* Main.storyboard */,
 				118BDCF8252F12B200E86EEA /* Assets.xcassets */,
 				118BDCFA252F12B200E86EEA /* LaunchScreen.storyboard */,
@@ -234,6 +242,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				118BDD3E252F553E00E86EEA /* DatePickerViewController.xib in Resources */,
 				118BDCFC252F12B200E86EEA /* LaunchScreen.storyboard in Resources */,
 				118BDCF9252F12B200E86EEA /* Assets.xcassets in Resources */,
 				118BDCF4252F12B100E86EEA /* Main.storyboard in Resources */,
@@ -261,9 +270,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				118BDCF1252F12B100E86EEA /* ViewController.swift in Sources */,
+				118BDD34252F405100E86EEA /* ItemTableViewCell.swift in Sources */,
+				118BDD3D252F553E00E86EEA /* DatePickerViewController.swift in Sources */,
+				118BDCF1252F12B100E86EEA /* MissionController.swift in Sources */,
 				118BDCED252F12B100E86EEA /* AppDelegate.swift in Sources */,
-				118BDCEF252F12B100E86EEA /* SceneDelegate.swift in Sources */,
 				118BDCF7252F12B100E86EEA /* Deadline.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -440,15 +450,18 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Deadline/Deadline.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = QJZ8C3M7CD;
 				INFOPLIST_FILE = Deadline/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = ai.medicus.Deadline;
+				PRODUCT_BUNDLE_IDENTIFIER = april.yang.Deadline;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTS_MACCATALYST = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -459,15 +472,18 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Deadline/Deadline.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = QJZ8C3M7CD;
 				INFOPLIST_FILE = Deadline/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = ai.medicus.Deadline;
+				PRODUCT_BUNDLE_IDENTIFIER = april.yang.Deadline;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTS_MACCATALYST = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
