@@ -18,6 +18,8 @@
 		118BDD34252F405100E86EEA /* ItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 118BDD33252F405100E86EEA /* ItemTableViewCell.swift */; };
 		118BDD3D252F553E00E86EEA /* DatePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 118BDD3B252F553E00E86EEA /* DatePickerViewController.swift */; };
 		118BDD3E252F553E00E86EEA /* DatePickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 118BDD3C252F553E00E86EEA /* DatePickerViewController.xib */; };
+		118BDD462531944700E86EEA /* DeadlineDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 118BDD452531944700E86EEA /* DeadlineDataManager.swift */; };
+		118BDD4C2531988600E86EEA /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 118BDD4B2531988600E86EEA /* CloudKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +58,8 @@
 		118BDD33252F405100E86EEA /* ItemTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemTableViewCell.swift; sourceTree = "<group>"; };
 		118BDD3B252F553E00E86EEA /* DatePickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerViewController.swift; sourceTree = "<group>"; };
 		118BDD3C252F553E00E86EEA /* DatePickerViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DatePickerViewController.xib; sourceTree = "<group>"; };
+		118BDD452531944700E86EEA /* DeadlineDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeadlineDataManager.swift; sourceTree = "<group>"; };
+		118BDD4B2531988600E86EEA /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +67,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				118BDD4C2531988600E86EEA /* CloudKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -90,6 +95,7 @@
 				118BDD05252F12B200E86EEA /* DeadlineTests */,
 				118BDD10252F12B200E86EEA /* DeadlineUITests */,
 				118BDCEA252F12B100E86EEA /* Products */,
+				118BDD4A2531988600E86EEA /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -108,6 +114,7 @@
 			children = (
 				118BDD22252F148D00E86EEA /* Deadline.entitlements */,
 				118BDCEC252F12B100E86EEA /* AppDelegate.swift */,
+				118BDD452531944700E86EEA /* DeadlineDataManager.swift */,
 				118BDCF0252F12B100E86EEA /* MissionController.swift */,
 				118BDD33252F405100E86EEA /* ItemTableViewCell.swift */,
 				118BDD3B252F553E00E86EEA /* DatePickerViewController.swift */,
@@ -137,6 +144,14 @@
 				118BDD13252F12B200E86EEA /* Info.plist */,
 			);
 			path = DeadlineUITests;
+			sourceTree = "<group>";
+		};
+		118BDD4A2531988600E86EEA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				118BDD4B2531988600E86EEA /* CloudKit.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -275,6 +290,7 @@
 				118BDCF1252F12B100E86EEA /* MissionController.swift in Sources */,
 				118BDCED252F12B100E86EEA /* AppDelegate.swift in Sources */,
 				118BDCF7252F12B100E86EEA /* Deadline.xcdatamodeld in Sources */,
+				118BDD462531944700E86EEA /* DeadlineDataManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -11,19 +11,38 @@ class MissionController: UIViewController {
     
     @IBOutlet var tableView: UITableView!
     
-    lazy var dateFormatter: DateFormatter = { () -> DateFormatter in
-        let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy.MM.dd HH:mm"
-        return formatter
-    }()
+    var missions: [DeadlineItem] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         render()
+        loadData()
+        DeadlineDataManager.instance.delegate = self
+        
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(loadData),
+            name: NSNotification.Name(
+                rawValue: "NSPersistentStoreRemoteChangeNotification"),
+                object: nil
+        )
+        
+        if UIDevice.current.systemName == "Mac OS X" {
+            Timer.scheduledTimer(timeInterval: 1, target: self.tableView, selector: #selector(tableView.reloadData), userInfo: nil, repeats: true)
+        }
+    }
+    
+    @objc func loadData() {
+        self.missions = DeadlineDataManager.missions
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
     }
     
     func render() {
         tableView.tableFooterView = UIView()
-        tableView.contentInset = UIEdgeInsets(top: 30, left: 10, bottom: 30, right: 10)
+        tableView.contentInset = UIEdgeInsets(top: 30, left: 0, bottom: 0, right: 0)
+        self.title = "My missions"
     }
     
     
@@ -31,23 +50,36 @@ class MissionController: UIViewController {
         editItem(indexPath: nil, done: nil)
     }
     
+    @IBAction func refreshAction(_ sender: Any) {
+        self.tableView.reloadData()
+    }
+    
     func editItem(indexPath: IndexPath?, done:((Bool)->())?) {
         
-        print("edit-->\(indexPath)")
-        
-        showAlertWith(mission: nil, date: Date())
+        if let indexPath = indexPath {
+            let item = missions[indexPath.row]
+            showAlertWith(mission: item.mission, date: item.date, item: item)
+        } else {
+            showAlertWith(mission: nil, date: Date(), item: nil)
+        }
         
         done?(true)
     }
     
     func deleteItem(indexPath: IndexPath, done:((Bool)->())?) {
         
-        print("delete-->\(indexPath)")
+        DeadlineDataManager.deleteMission(item: missions[indexPath.row])
         
         done?(true)
     }
     
-    func showAlertWith(mission: String?, date: Date?) {
+    
+    /// update or add item
+    /// - Parameters:
+    ///   - mission: mission
+    ///   - date: date
+    ///   - item: if item not nil, update the item
+    func showAlertWith(mission: String?, date: Date?, item: DeadlineItem?) {
         
         let alert = UIAlertController(title: "edit", message: nil, preferredStyle: .alert)
         alert.addTextField { (textField) in
@@ -55,16 +87,26 @@ class MissionController: UIViewController {
             textField.text = mission
         }
         
-        alert.addAction(UIAlertAction(title: date==nil ? "" : dateFormatter.string(from: date!), style: .default, handler: { (action) in
+        alert.addAction(UIAlertAction(title: date==nil ? "" : DeadlineDataManager.dateFormatter.string(from: date!), style: .default, handler: { (action) in
             
             self.showDatePicker(currentDate: date) { (date) in
-                self.showAlertWith(mission: alert.textFields?.first?.text, date: date)
+                self.showAlertWith(mission: alert.textFields?.first?.text, date: date, item: item)
             }
         }))
         
         alert.addAction(UIAlertAction(title: "Done", style: .default, handler: { (action) in
-            if let mission = alert.textFields?.first?.text {
-                print("add mission ---> \(mission)")
+            if let mission = alert.textFields?.first?.text,
+               let date = date,
+               !mission.isEmpty {
+                
+                if let item = item {
+                    item.mission = mission
+                    item.date = date
+                    DeadlineDataManager.updateMission(item: item)
+                } else {
+                    DeadlineDataManager.addMission(mission: mission, date: date)
+                }
+                
             }
         }))
         
@@ -83,12 +125,13 @@ class MissionController: UIViewController {
 
 extension MissionController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        3
+        missions.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "textcellId", for: indexPath) as! ItemTableViewCell
-        cell.configure(indexPath: indexPath, delegate: self)
+        
+        cell.configure(item: missions[indexPath.row], indexPath: indexPath, delegate: self)
         return cell
     }
 }
@@ -116,5 +159,11 @@ extension MissionController: ItemTableViewCellDelegate{
     
     func itemTableViewCellDeleteAction(cell: ItemTableViewCell) {
         deleteItem(indexPath: cell.indexPath, done: nil)
+    }
+}
+
+extension MissionController: DeadlineDataManagerDelegate {
+    func deadlineDataManagerDidUpdateData() {
+        loadData()
     }
 }
