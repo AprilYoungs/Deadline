@@ -24,6 +24,7 @@ class ItemTableViewCell: UITableViewCell {
     // MARK: - variables
     weak var delegate: ItemTableViewCellDelegate?
     var indexPath: IndexPath = IndexPath(item: 0, section: 0)
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         

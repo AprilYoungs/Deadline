@@ -17,18 +17,21 @@ class MissionController: UIViewController {
         super.viewDidLoad()
         render()
         loadData()
-        DeadlineDataManager.instance.delegate = self
         
         NotificationCenter.default.addObserver(
             self,
             selector: #selector(loadData),
             name: NSNotification.Name(
                 rawValue: "NSPersistentStoreRemoteChangeNotification"),
-                object: nil
+            object: nil
         )
         
         if UIDevice.current.systemName == "Mac OS X" {
-            Timer.scheduledTimer(timeInterval: 1, target: self.tableView, selector: #selector(tableView.reloadData), userInfo: nil, repeats: true)
+            Timer.scheduledTimer(timeInterval: 1,
+                                 target: self.tableView!,
+                                 selector: #selector(tableView.reloadData),
+                                 userInfo: nil,
+                                 repeats: true)
         }
     }
     
@@ -44,7 +47,6 @@ class MissionController: UIViewController {
         tableView.contentInset = UIEdgeInsets(top: 30, left: 0, bottom: 0, right: 0)
         self.title = "My missions"
     }
-    
     
     @IBAction func addMission(_ sender: Any) {
         editItem(indexPath: nil, done: nil)
@@ -72,7 +74,6 @@ class MissionController: UIViewController {
         
         done?(true)
     }
-    
     
     /// update or add item
     /// - Parameters:
@@ -143,7 +144,6 @@ extension MissionController: UITableViewDelegate {
         })])
     }
     
-    
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         return UISwipeActionsConfiguration(actions: [UIContextualAction(style: .destructive, title: "delete", handler: { (_, _, done) in
             self.deleteItem(indexPath: indexPath, done: done)
@@ -162,8 +162,3 @@ extension MissionController: ItemTableViewCellDelegate{
     }
 }
 
-extension MissionController: DeadlineDataManagerDelegate {
-    func deadlineDataManagerDidUpdateData() {
-        loadData()
-    }
-}

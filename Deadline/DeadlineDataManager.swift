@@ -8,28 +8,17 @@
 import UIKit
 import CoreData
 
-protocol DeadlineDataManagerDelegate: NSObjectProtocol {
-    func deadlineDataManagerDidUpdateData()
-}
-
 class DeadlineDataManager {
     
-    weak var delegate: DeadlineDataManagerDelegate?
-    
-    static let instance = DeadlineDataManager()
     private let persistentContainer: NSPersistentCloudKitContainer
     private let viewContext: NSManagedObjectContext
     
+    static let instance = DeadlineDataManager()
     static var dateFormatter: DateFormatter = { () -> DateFormatter in
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy.MM.dd HH:mm"
         return formatter
     }()
-    
-    private init() {
-        persistentContainer = (UIApplication.shared.delegate as! AppDelegate).persistentContainer
-        viewContext = persistentContainer.viewContext
-    }
     
     static var missions: [DeadlineItem] {
         
@@ -48,6 +37,11 @@ class DeadlineDataManager {
         return []
     }
     
+    private init() {
+        persistentContainer = (UIApplication.shared.delegate as! AppDelegate).persistentContainer
+        viewContext = persistentContainer.viewContext
+    }
+
     static func addMission(mission: String, date: Date) {
         let object = DeadlineItem(context: instance.viewContext)
         object.mission = mission
@@ -79,7 +73,6 @@ class DeadlineDataManager {
         } catch {
             print("Refresh mission error \(error.localizedDescription)")
         }
-        
     }
 }
 
