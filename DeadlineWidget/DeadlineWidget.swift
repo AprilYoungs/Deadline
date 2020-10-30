@@ -69,10 +69,12 @@ struct DeadlineWidgetEntryView : View {
         
         VStack(alignment: .leading){
             MissionView(mission: entry.mission[0])
-            Text("")
-                .frame(minWidth: 0, maxWidth: .infinity, minHeight: 1, idealHeight: 1, maxHeight: 1, alignment: .center)
-                .background(Color.white)
-            MissionView(mission: entry.mission[1])
+            if entry.mission.count > 1 {
+                Text("")
+                    .frame(minWidth: 0, maxWidth: .infinity, minHeight: 1, idealHeight: 1, maxHeight: 1, alignment: .center)
+                    .background(Color.white)
+                MissionView(mission: entry.mission[1])
+            }
         }.frame(minWidth: 0, idealWidth: 200, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
         .background(Color.black)
     }
@@ -101,13 +103,13 @@ struct DeadlineWidget: Widget {
         }
         .configurationDisplayName("Deadline list")
         .description("List the last two upcoming deadline.")
-        .supportedFamilies([.systemSmall,.systemMedium])
+        .supportedFamilies([.systemMedium])
     }
 }
 
 struct DeadlineWidget_Previews: PreviewProvider {
     static var previews: some View {
         DeadlineWidgetEntryView(entry: DeadlineEntry(date: Date(), mission: [MissionItem(mission: "mission", date: Date()), MissionItem(mission: "mission", date: Date())]))
-            .previewContext(WidgetPreviewContext(family: .systemSmall))
+            .previewContext(WidgetPreviewContext(family: .systemMedium))
     }
 }

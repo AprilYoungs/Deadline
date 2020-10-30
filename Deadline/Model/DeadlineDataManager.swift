@@ -55,7 +55,9 @@ class DeadlineDataManager {
                 }
                 return false
             }
-            DeadlineDataManager.writeMissions(items:items.prefix(upTo: 2).map{$0})
+            
+            let widgetItems = items.count > 1 ? items.prefix(upTo: 2).map{$0} : items
+            DeadlineDataManager.writeMissions(items:widgetItems)
             
             return items
         }
