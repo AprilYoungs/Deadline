@@ -7,6 +7,7 @@
 
 import UIKit
 import CoreData
+import WidgetKit
 
 class DeadlineDataManager {
     
@@ -20,6 +21,29 @@ class DeadlineDataManager {
         return formatter
     }()
     
+    private init() {
+        persistentContainer = (UIApplication.shared.delegate as! AppDelegate).persistentContainer
+        viewContext = persistentContainer.viewContext
+    }
+    
+    static func sharedContainerURL() -> URL {
+        return FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.april.yang.Deadline")!
+    }
+    
+    static func writeMissions(items: [DeadlineItem]) {
+        let missions = items.map{MissionItem(mission: $0.mission ?? "", date: $0.date ?? Date())}
+        let archiveURL = sharedContainerURL().appendingPathComponent("missions.json")
+        let encoder = JSONEncoder()
+        if let dataToSave = try? encoder.encode(missions) {
+            do {
+                try dataToSave.write(to: archiveURL)
+            } catch {
+                print("Error: Can't write conents \(error.localizedDescription)")
+            }
+        }
+        WidgetCenter.shared.reloadTimelines(ofKind: "DeadlineWidget")
+    }
+    
     static var missions: [DeadlineItem] {
         
         if var items = try? instance.persistentContainer.viewContext.fetch(DeadlineItem.fetchRequest()) as? [DeadlineItem]
@@ -31,15 +55,12 @@ class DeadlineDataManager {
                 }
                 return false
             }
+            DeadlineDataManager.writeMissions(items:items.prefix(upTo: 2).map{$0})
+            
             return items
         }
         
         return []
-    }
-    
-    private init() {
-        persistentContainer = (UIApplication.shared.delegate as! AppDelegate).persistentContainer
-        viewContext = persistentContainer.viewContext
     }
 
     static func addMission(mission: String, date: Date) {
